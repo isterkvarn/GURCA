@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://cy08ddiag1tdh"]
+
+[ext_resource type="Script" path="res://Jar/juice_jar.gd" id="1_e4yvl"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nt82e"]
+size = Vector3(1.5, 1.5, 1.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w7y47"]
+transparency = 1
+albedo_color = Color(0.290196, 1, 0, 0.733333)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_kjsbl"]
+height = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wa5pi"]
+albedo_color = Color(0.427451, 0.427451, 0.427451, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_qx0a3"]
+top_radius = 0.55
+bottom_radius = 0.55
+height = 0.3
+
+[node name="JuiceJar" type="Area3D"]
+script = ExtResource("1_e4yvl")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_nt82e")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_w7y47")
+mesh = SubResource("CylinderMesh_kjsbl")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.488226, 0)
+material_override = SubResource("StandardMaterial3D_wa5pi")
+mesh = SubResource("CylinderMesh_qx0a3")
+skeleton = NodePath("")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

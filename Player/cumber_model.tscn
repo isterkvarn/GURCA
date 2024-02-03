@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://rw1by7ish86m"]
+
+[ext_resource type="PackedScene" uid="uid://dt7iux7a3sl8u" path="res://Player/cumber.glb" id="1_ltuhx"]
+[ext_resource type="Texture2D" uid="uid://cdc4pc1yewkov" path="res://Player/cumber.png" id="2_mkniu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jr7i7"]
+albedo_texture = ExtResource("2_mkniu")
+
+[node name="cumber" instance=ExtResource("1_ltuhx")]
+
+[node name="Skeleton3D" parent="Armature" index="0"]
+bones/0/rotation = Quaternion(0.171773, 1.17437e-07, 2.0477e-08, 0.985137)
+bones/1/rotation = Quaternion(-0.110228, 4.16598e-15, -2.62803e-08, 0.993906)
+bones/2/rotation = Quaternion(-0.146202, 7.53466e-16, -3.48573e-08, 0.989255)
+
+[node name="Cube" parent="Armature/Skeleton3D" index="0"]
+material_override = SubResource("StandardMaterial3D_jr7i7")

@@ -5,7 +5,10 @@ const LAUNCH_FORCE = 0.5
 const AIR_ROTATION_SPEED = 6
 const ROTATION_AXIS = Vector3(0, 0, 1.0)
 const BULLET_TIME_SLOW = 0.1
-const BULLET_TIME_JUICE_DRAIN = 1
+const BULLET_TIME_JUICE_DRAIN = 20
+const CHARGE_SPEED = 60
+const DASH_COST = 5
+const LAUNCH_MAX_COOLDOWN = 1
 
 const CHARGE_VECTOR_CONSTANT = 0.5
 const MAX_CHARGE = 80
@@ -15,7 +18,8 @@ const MIN_CHARGE = 20
 @onready var camera = $Camera3D
 @onready var juice_bar = $Camera3D/Control/JuiceBar
 @onready var charge_bar = $Camera3D/Control/Chargebar
-@onready var arrow_node = $Arrow_Node
+@onready var arrow_node = $ArrowNode
+@onready var animator = $CollisionShape3D/cumber/AnimationPlayer
 
 const MAX_JUICE_POINTS = 100
 var juice_points = MAX_JUICE_POINTS
@@ -24,6 +28,7 @@ var juice_points = MAX_JUICE_POINTS
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var charging_jump = false
 var curr_charge_time = 0
+var launch_cooldown = 0
 
 func _ready():
 	juice_bar.max_value = MAX_JUICE_POINTS
@@ -31,15 +36,15 @@ func _ready():
 
 func _physics_process(delta):
 	
-	# Do bullet time if checked
-	check_bullet_time(delta)
-	
 	# Update juice bar
 	update_juicebar()
 	
 	# Never move in z
 	velocity.z = 0
 	
+	#Handle drawing arrow
+	if(charging_jump):
+		handle_arrow_animation()
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta
@@ -52,30 +57,46 @@ func _physics_process(delta):
 		velocity.x = 0
 		velocity.y = 0
 		
+
 		# Stand upright if on foor
-		collision_shape.rotation = Vector3.ZERO
-		
-		#Handle drawing arrow
-		if(charging_jump):
-			handle_arrow_animation()
-	
-		# Check for launch input
-		if Input.is_action_pressed("launch"):
-			if !charging_jump:
-				charging_jump = true
-				curr_charge_time = 0
-			curr_charge_time += 1
-			if curr_charge_time >= MAX_CHARGE:
-				curr_charge_time = MAX_CHARGE
-		
-		if Input.is_action_just_released("launch"):
-			charging_jump = false
+		var mouse_direction = get_mouse_pos_in_scene() - global_transform.origin
+		if mouse_direction.x > 0:
+			collision_shape.rotation = Vector3(0, -PI/2, 0)
+		else:
+			collision_shape.rotation = Vector3(0, PI/2, 0)
+
+		if Input.is_action_pressed("launch") and curr_charge_time > 0:
+			animator.play("ArmatureAction")
 			
-			arrow_node.visible = false
-			var player_pos = global_transform.origin
-			var mouse_pos_3d = get_mouse_pos_in_scene()
-			var launch_vector = (mouse_pos_3d - player_pos).normalized()
-			launch(launch_vector)
+		if Input.is_action_just_released("launch"):
+			animator.stop()
+	
+	if launch_cooldown >= 0:
+		launch_cooldown -= delta
+			
+	# Check for launch input
+	if Input.is_action_pressed("launch") and juice_points > 0 and launch_cooldown <= 0:
+		if !charging_jump:
+			charging_jump = true
+			juice_points -= DASH_COST
+			if not is_on_floor():
+				Engine.time_scale = BULLET_TIME_SLOW
+		var time_scale = Engine.time_scale
+		juice_points -= BULLET_TIME_JUICE_DRAIN*delta/time_scale
+		curr_charge_time += CHARGE_SPEED*delta/time_scale
+		if curr_charge_time >= MAX_CHARGE:
+			curr_charge_time = MAX_CHARGE
+
+		
+	if Input.is_action_just_released("launch") and curr_charge_time > 0:
+		charging_jump = false
+		arrow_node.visible = false
+		Engine.time_scale = 1.0
+		
+		var player_pos = global_transform.origin
+		var mouse_pos_3d = get_mouse_pos_in_scene()
+		var launch_vector = (mouse_pos_3d - player_pos).normalized()
+		launch(launch_vector)
 
 	# Save velocity to use for bounce
 	var saved_velocity = velocity
@@ -124,7 +145,9 @@ func get_mouse_pos_in_scene():
 	
 func launch(launch_direction):
 	var curr_force = LAUNCH_FORCE * (curr_charge_time + MIN_CHARGE)
-	velocity += curr_force * launch_direction.normalized()
+	velocity = curr_force * launch_direction.normalized()
+	curr_charge_time = 0
+	launch_cooldown = LAUNCH_MAX_COOLDOWN
 	
 func do_rotation(delta):
 	# Rotate towards movement direction
@@ -134,13 +157,11 @@ func do_rotation(delta):
 
 	collision_shape.rotate(ROTATION_AXIS, air_rotation*delta)
 
-func check_bullet_time(delta):
-	if Input.is_action_pressed("bullet_time"):
-		Engine.time_scale = BULLET_TIME_SLOW
-		juice_points -= BULLET_TIME_JUICE_DRAIN/BULLET_TIME_SLOW*delta
-	else:
-		Engine.time_scale = 1.0
-		
+
 func update_juicebar():
 	juice_bar.value = juice_points
 	charge_bar.value = curr_charge_time
+
+func add_juice(amount):
+	juice_points += amount
+	juice_points = clamp(juice_points, 0, MAX_JUICE_POINTS)
