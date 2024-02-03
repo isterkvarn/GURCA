@@ -8,11 +8,12 @@ const BULLET_TIME_SLOW = 0.1
 const BULLET_TIME_JUICE_DRAIN = 1
 
 const MAX_CHARGE = 100
-
+const MIN_CHARGE = 20
 
 @onready var collision_shape = $CollisionShape3D
 @onready var camera = $Camera3D
-@onready var juice_bar = $Camera3D/Control/ProgressBar
+@onready var juice_bar = $Camera3D/Control/JuiceBar
+@onready var charge_bar = $Camera3D/Control/Chargebar
 
 const MAX_JUICE_POINTS = 100
 var juice_points = MAX_JUICE_POINTS
@@ -24,6 +25,7 @@ var curr_charge_time = 0
 
 func _ready():
 	juice_bar.max_value = MAX_JUICE_POINTS
+	charge_bar.max_value = MAX_CHARGE
 
 func _physics_process(delta):
 	
@@ -59,13 +61,10 @@ func _physics_process(delta):
 			curr_charge_time += 1
 			if curr_charge_time >= MAX_CHARGE:
 				curr_charge_time = MAX_CHARGE
-			
-			
 		
 		if Input.is_action_just_released("launch"):
 			charging_jump = false
 			
-
 			var player_pos = global_transform.origin
 			var mouse_pos_3d = get_mouse_pos_in_scene()
 			var launch_vector = (mouse_pos_3d - player_pos).normalized()
@@ -104,7 +103,7 @@ func get_mouse_pos_in_scene():
 	return space_state.intersect_ray(query)["position"]
 	
 func launch(launch_direction):
-	var curr_force = LAUNCH_FORCE  * curr_charge_time
+	var curr_force = LAUNCH_FORCE * (curr_charge_time + MIN_CHARGE)
 	velocity += curr_force * launch_direction.normalized()
 	
 func do_rotation(delta):
@@ -124,3 +123,4 @@ func check_bullet_time(delta):
 		
 func update_juicebar():
 	juice_bar.value = juice_points
+	charge_bar.value = curr_charge_time

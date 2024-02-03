@@ -35,10 +35,15 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="ProgressBar" type="ProgressBar" parent="Camera3D/Control"]
+[node name="JuiceBar" type="ProgressBar" parent="Camera3D/Control"]
 layout_mode = 0
 offset_right = 195.0
 offset_bottom = 27.0
+
+[node name="Chargebar" type="ProgressBar" parent="Camera3D/Control"]
+offset_top = 33.0
+offset_right = 195.0
+offset_bottom = 60.0
 
 [node name="AimControlArea" type="Area3D" parent="."]
 
