@@ -6,6 +6,7 @@ const AIR_ROTATION_SPEED = 6
 const ROTATION_AXIS = Vector3(0, 0, 1.0)
 const BULLET_TIME_SLOW = 0.1
 const BULLET_TIME_JUICE_DRAIN = 20
+const JUICE_REGEN = 10
 const CHARGE_SPEED = 60
 const DASH_COST = 5
 const LAUNCH_MAX_COOLDOWN = 1
@@ -35,6 +36,8 @@ func _ready():
 	charge_bar.max_value = MAX_CHARGE
 
 func _physics_process(delta):
+	# Clamp juice
+	juice_points = clamp(juice_points, 0, MAX_JUICE_POINTS)
 	
 	# Update juice bar
 	update_juicebar()
@@ -53,6 +56,8 @@ func _physics_process(delta):
 		do_rotation(delta)
 	
 	else:
+		juice_points += JUICE_REGEN*delta
+		
 		# Stop if on floor
 		velocity.x = 0
 		velocity.y = 0
@@ -108,7 +113,7 @@ func _physics_process(delta):
 		var collision = get_slide_collision(0)
 		if collision: 
 			var bounce_direction = collision.get_collider(0).global_position.direction_to(global_position)
-			velocity = saved_velocity.length()*0.5*bounce_direction
+			velocity = saved_velocity.length()*0.8*bounce_direction
 
 func handle_arrow_animation():
 	arrow_node.visible = true
