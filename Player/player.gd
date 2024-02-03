@@ -5,9 +5,11 @@ const LAUNCH_FORCE = 20
 const AIR_ROTATION_SPEED = 6
 const ROTATION_AXIS = Vector3(0, 0, 1.0)
 const BULLET_TIME_SLOW = 0.1
+const BULLET_TIME_JUICE_DRAIN = 1
 
 @onready var collision_shape = $CollisionShape3D
 @onready var camera = $Camera3D
+@onready var juice_bar = $Camera3D/Control/ProgressBar
 
 const MAX_JUICE_POINTS = 100
 var juice_points = MAX_JUICE_POINTS
@@ -15,9 +17,16 @@ var juice_points = MAX_JUICE_POINTS
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
+func _ready():
+	juice_bar.max_value = MAX_JUICE_POINTS
+
 func _physics_process(delta):
 	
-	check_bullet_time()
+	# Do bullet time if checked
+	check_bullet_time(delta)
+	
+	# Update juice bar
+	update_juicebar()
 	
 	# Never move in z
 	velocity.z = 0
@@ -88,8 +97,12 @@ func do_rotation(delta):
 
 	collision_shape.rotate(ROTATION_AXIS, air_rotation*delta)
 
-func check_bullet_time():
+func check_bullet_time(delta):
 	if Input.is_action_pressed("bullet_time"):
 		Engine.time_scale = BULLET_TIME_SLOW
+		juice_points -= BULLET_TIME_JUICE_DRAIN/BULLET_TIME_SLOW*delta
 	else:
 		Engine.time_scale = 1.0
+		
+func update_juicebar():
+	juice_bar.value = juice_points
