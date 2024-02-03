@@ -1,7 +1,7 @@
 extends Area3D
 
 const MAX_ANGLE = 45.0
-const SPEED = 10.0
+const SPEED = 20.0
 
 @onready var shape = $"CollisionShape3D"
 @onready var width = shape.shape.extents.x
