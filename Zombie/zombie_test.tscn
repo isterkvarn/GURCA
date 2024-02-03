@@ -28,7 +28,7 @@ collision_mask = 3
 shape = SubResource("BoxShape3D_ayxlg")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Level"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.8325, 1, 0)
 mesh = SubResource("BoxMesh_o2qhw")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Level/MeshInstance3D2"]
@@ -50,7 +50,7 @@ collision_mask = 3
 shape = SubResource("BoxShape3D_wtao3")
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="Level"]
-transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 1, -5, 6, 0)
+transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 1, -5, 12.4444, 0)
 mesh = SubResource("BoxMesh_o2qhw")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Level/MeshInstance3D4"]
@@ -66,11 +66,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.13658, 0)
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.585679, 0.810543, 0, -0.810543, 0.585679, 0, 9.38985, 7.80583)
 
-[node name="Zombie" parent="." instance=ExtResource("2_cqjvc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.77448, 4.15638, -0.0125803)
-
 [node name="Zombie2" parent="." instance=ExtResource("2_cqjvc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.7745, 4.15638, -0.0125803)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.7745, 2.07294, -0.0125803)
+
+[node name="Zombie4" parent="." instance=ExtResource("2_cqjvc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.8894, 2.07294, -0.0125803)
+
+[node name="Zombie5" parent="." instance=ExtResource("2_cqjvc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5723, 2.07294, -0.0125803)
+
+[node name="Zombie6" parent="." instance=ExtResource("2_cqjvc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.8285, 2.07294, -0.0125803)
+
+[node name="Zombie7" parent="." instance=ExtResource("2_cqjvc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.69224, 2.07294, -0.0125803)
 
 [node name="Zombie3" parent="." instance=ExtResource("2_cqjvc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.94899, 7.68182, -0.0125803)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.94899, 14.1263, -0.0125803)

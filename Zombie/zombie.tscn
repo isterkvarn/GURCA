@@ -1,12 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://v1gij5hbryqi"]
+[gd_scene load_steps=5 format=3 uid="uid://v1gij5hbryqi"]
 
 [ext_resource type="Script" path="res://Zombie/zombie.gd" id="1_j6a5u"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d7nnx"]
-albedo_color = Color(0.863836, 0.000346926, 0.806774, 1)
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_e5waq"]
-material = SubResource("StandardMaterial3D_d7nnx")
+[ext_resource type="ArrayMesh" uid="uid://i00ejuy2envg" path="res://Zombie/zombie.obj" id="2_gcvix"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_0083n"]
 height = 2.4
@@ -17,14 +12,10 @@ script/source = "extends CollisionShape3D
 
 "
 
-[node name="Zombie" type="CharacterBody3D"]
+[node name="Zombie" type="CharacterBody3D" groups=["zombie"]]
 collision_layer = 2
 collision_mask = 4
 script = ExtResource("1_j6a5u")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1.5, 0, 0, 0, 1.2, 0, 0, 0, 1.5, 0, 0, 0)
-mesh = SubResource("CylinderMesh_e5waq")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CylinderShape3D_0083n")
@@ -39,3 +30,6 @@ collision_mask = 4
 [node name="RayLeft" type="RayCast3D" parent="Rays"]
 transform = Transform3D(-0.707107, 1.41421, -8.74228e-08, 0.707107, 1.41421, 0, 6.18172e-08, -1.23634e-07, -1, 0, 0, 0)
 collision_mask = 4
+
+[node name="Zombie" type="MeshInstance3D" parent="."]
+mesh = ExtResource("2_gcvix")

@@ -15,6 +15,11 @@ const MIN_CHARGE = 20
 @onready var juice_bar = $Camera3D/Control/JuiceBar
 @onready var charge_bar = $Camera3D/Control/Chargebar
 
+@onready var aoe_scene = preload("res://Player/cucumber_aoe.tscn")
+const AOE_DELAY = 0.2
+var aoe_instance = null
+var aoe_timer = 0.0
+
 const MAX_JUICE_POINTS = 100
 var juice_points = MAX_JUICE_POINTS
 
@@ -69,6 +74,18 @@ func _physics_process(delta):
 			var mouse_pos_3d = get_mouse_pos_in_scene()
 			var launch_vector = (mouse_pos_3d - player_pos).normalized()
 			launch(launch_vector)
+		
+		if Input.is_action_just_pressed("aoe_test"):
+			aoe_instance = aoe_scene.instantiate()
+			aoe_instance.set_position(position)
+			get_tree().get_root().add_child(aoe_instance)
+		
+		if not aoe_instance == null:
+			aoe_timer += delta
+		if aoe_timer > AOE_DELAY:
+			aoe_timer = 0
+			get_tree().get_root().remove_child(aoe_instance)
+			aoe_instance = null
 
 	# Save velocity to use for bounce
 	var saved_velocity = velocity
