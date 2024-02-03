@@ -1,0 +1,104 @@
+[gd_scene load_steps=5 format=3 uid="uid://ds0a7slobkjm"]
+
+[ext_resource type="PackedScene" uid="uid://11xpuffjiu65" path="res://Player/player.tscn" id="1_sammd"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_c6fiy"]
+size = Vector3(40, 1, 10)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_0s7k1"]
+points = PackedVector3Array(-20, -0.5, -5, -20, 0.5, -5, 20, -0.5, -5, -20, -0.5, 5, -20, 0.5, 5, 20, 0.5, -5, 20, -0.5, 5, 20, 0.5, 5)
+
+[sub_resource type="TorusMesh" id="TorusMesh_2rt2i"]
+
+[node name="Main" type="Node3D"]
+
+[node name="Player" parent="." instance=ExtResource("1_sammd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.64327, 0)
+
+[node name="Floor" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_c6fiy")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="Floor"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D2"]
+shape = SubResource("ConvexPolygonShape3D_0s7k1")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.580298, 0.439384, -0.685708, -0.235649, 0.896548, 0.375061, 0.779566, -0.0560604, 0.623806, 0, 0, 0)
+
+[node name="Donuts" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Donuts"]
+transform = Transform3D(1, 0, 0, 0, -0.0208202, -0.999783, 0, 0.999783, -0.0208202, -0.000745773, 5.06254, -5.02284)
+mesh = SubResource("TorusMesh_2rt2i")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Donuts"]
+transform = Transform3D(1, 0, 0, 0, -0.0208202, -0.999783, 0, 0.999783, -0.0208202, 3.42871, 5.06254, -5.02284)
+mesh = SubResource("TorusMesh_2rt2i")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Donuts"]
+transform = Transform3D(1, 0, 0, 0, -0.0208202, -0.999783, 0, 0.999783, -0.0208202, 6.71611, 5.06254, -5.02284)
+mesh = SubResource("TorusMesh_2rt2i")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Donuts"]
+transform = Transform3D(1, 0, 0, 0, -0.0208202, -0.999783, 0, 0.999783, -0.0208202, -6.45419, 5.06254, -5.02284)
+mesh = SubResource("TorusMesh_2rt2i")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Donuts"]
+transform = Transform3D(1, 0, 0, 0, -0.0208202, -0.999783, 0, 0.999783, -0.0208202, -3.16679, 5.06254, -5.02284)
+mesh = SubResource("TorusMesh_2rt2i")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Donuts"]
+transform = Transform3D(1, 0, 0, 0, -0.0208202, -0.999783, 0, 0.999783, -0.0208202, 16.1292, 5.06254, -5.02284)
+mesh = SubResource("TorusMesh_2rt2i")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="Donuts"]
+transform = Transform3D(1, 0, 0, 0, -0.0208202, -0.999783, 0, 0.999783, -0.0208202, 19.5587, 5.06254, -5.02284)
+mesh = SubResource("TorusMesh_2rt2i")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="Donuts"]
+transform = Transform3D(1, 0, 0, 0, -0.0208202, -0.999783, 0, 0.999783, -0.0208202, 22.8461, 5.06254, -5.02284)
+mesh = SubResource("TorusMesh_2rt2i")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="Donuts"]
+transform = Transform3D(1, 0, 0, 0, -0.0208202, -0.999783, 0, 0.999783, -0.0208202, 9.67579, 5.06254, -5.02284)
+mesh = SubResource("TorusMesh_2rt2i")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="Donuts"]
+transform = Transform3D(1, 0, 0, 0, -0.0208202, -0.999783, 0, 0.999783, -0.0208202, 12.9632, 5.06254, -5.02284)
+mesh = SubResource("TorusMesh_2rt2i")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D11" type="MeshInstance3D" parent="Donuts"]
+transform = Transform3D(1, 0, 0, 0, -0.0208202, -0.999783, 0, 0.999783, -0.0208202, -16.5256, 5.06254, -5.02284)
+mesh = SubResource("TorusMesh_2rt2i")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D12" type="MeshInstance3D" parent="Donuts"]
+transform = Transform3D(1, 0, 0, 0, -0.0208202, -0.999783, 0, 0.999783, -0.0208202, -13.0962, 5.06254, -5.02284)
+mesh = SubResource("TorusMesh_2rt2i")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D13" type="MeshInstance3D" parent="Donuts"]
+transform = Transform3D(1, 0, 0, 0, -0.0208202, -0.999783, 0, 0.999783, -0.0208202, -9.80878, 5.06254, -5.02284)
+mesh = SubResource("TorusMesh_2rt2i")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D14" type="MeshInstance3D" parent="Donuts"]
+transform = Transform3D(1, 0, 0, 0, -0.0208202, -0.999783, 0, 0.999783, -0.0208202, -22.9791, 5.06254, -5.02284)
+mesh = SubResource("TorusMesh_2rt2i")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D15" type="MeshInstance3D" parent="Donuts"]
+transform = Transform3D(1, 0, 0, 0, -0.0208202, -0.999783, 0, 0.999783, -0.0208202, -19.6917, 5.06254, -5.02284)
+mesh = SubResource("TorusMesh_2rt2i")
+skeleton = NodePath("../..")
