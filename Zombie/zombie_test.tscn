@@ -12,6 +12,7 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_wtao3"]
 
 [node name="ZombieTest" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.514178, 0, 0)
 
 [node name="Level" type="Node3D" parent="."]
 
@@ -61,7 +62,7 @@ collision_mask = 3
 shape = SubResource("BoxShape3D_wtao3")
 
 [node name="Player" parent="." instance=ExtResource("1_p4lpe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.13658, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.65696, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.585679, 0.810543, 0, -0.810543, 0.585679, 0, 9.38985, 7.80583)
