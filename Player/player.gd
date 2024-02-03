@@ -14,6 +14,7 @@ const MIN_CHARGE = 20
 @onready var camera = $Camera3D
 @onready var juice_bar = $Camera3D/Control/JuiceBar
 @onready var charge_bar = $Camera3D/Control/Chargebar
+@onready var animator = $CollisionShape3D/cumber/AnimationPlayer
 
 const MAX_JUICE_POINTS = 100
 var juice_points = MAX_JUICE_POINTS
@@ -51,7 +52,11 @@ func _physics_process(delta):
 		velocity.y = 0
 		
 		# Stand upright if on foor
-		collision_shape.rotation = Vector3.ZERO
+		var mouse_direction = get_mouse_pos_in_scene() - global_transform.origin
+		if mouse_direction.x > 0:
+			collision_shape.rotation = Vector3(0, -PI/2, 0)
+		else:
+			collision_shape.rotation = Vector3(0, PI/2, 0)
 	
 		# Check for launch input
 		if Input.is_action_pressed("launch"):
@@ -61,8 +66,12 @@ func _physics_process(delta):
 			curr_charge_time += 1
 			if curr_charge_time >= MAX_CHARGE:
 				curr_charge_time = MAX_CHARGE
+				
+			if Input.is_action_just_pressed("launch"):
+				animator.play("ArmatureAction")
 		
 		if Input.is_action_just_released("launch"):
+			animator.stop()
 			charging_jump = false
 			
 			var player_pos = global_transform.origin
