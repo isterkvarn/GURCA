@@ -34,6 +34,8 @@ var curr_charge_time = 0
 var launch_cooldown = 0
 var doing_aoe = false
 
+var current_trail = Trail
+
 func _ready():
 	juice_bar.max_value = MAX_JUICE_POINTS
 	charge_bar.max_value = MAX_CHARGE
@@ -184,3 +186,7 @@ func spawn_aoe():
 	var aoe_instance = aoe_scene.instantiate()
 	aoe_instance.set_position(position)
 	get_tree().get_root().add_child(aoe_instance)
+
+func make_trail():
+	current_trail = Trail.create()
+	add_child(current_trail)

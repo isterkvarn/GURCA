@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://11xpuffjiu65"]
+[gd_scene load_steps=15 format=3 uid="uid://11xpuffjiu65"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_d5krx"]
 [ext_resource type="Texture2D" uid="uid://cdc4pc1yewkov" path="res://Player/cumber.png" id="2_kc42m"]
@@ -81,6 +81,17 @@ _data = {
 [sub_resource type="BoxShape3D" id="BoxShape3D_nvcnw"]
 size = Vector3(400, 400, 0)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qngyf"]
+transparency = 1
+albedo_color = Color(1, 0.0862745, 0, 0.619608)
+
+[sub_resource type="Curve" id="Curve_g34iy"]
+_data = [Vector2(0, 0.698589), 0.0, 0.0, 0, 0, Vector2(0.0549738, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_f33ia"]
+colors = PackedColorArray(0.776471, 1, 0, 1, 1, 0, 0, 1)
+
 [node name="Player" type="CharacterBody3D" groups=["Player"]]
 collision_mask = 4
 script = ExtResource("1_d5krx")
@@ -160,3 +171,9 @@ visible = false
 
 [node name="Arrow" parent="ArrowNode" instance=ExtResource("3_criq3")]
 transform = Transform3D(-3.09086e-08, 0.707107, 0.707107, -1, -4.37114e-08, 0, 3.09086e-08, -0.707107, 0.707107, 0, 0, 0)
+
+[node name="TrailEmitter" type="TrailEmitter" parent="."]
+material = SubResource("StandardMaterial3D_qngyf")
+curve = SubResource("Curve_g34iy")
+gradient = SubResource("Gradient_f33ia")
+geometry_nodepath = NodePath("..")

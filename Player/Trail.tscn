@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://574u6mqguado"]
+
+[ext_resource type="Script" path="res://Player/Trail.gd" id="1_xtpnr"]
+
+[sub_resource type="Curve" id="Curve_kipdu"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.528796, 0.685484), 0.0, 0.0, 0, 0, Vector2(0.971204, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_gumeq"]
+colors = PackedColorArray(0.764706, 1, 0, 1, 1, 0, 0.145098, 1)
+
+[node name="Trail" type="Line2D"]
+top_level = true
+rotation = -0.261799
+points = PackedVector2Array(48.0833, 83.2827, 179.777, 113.394, 418.962, 213.718, 486.345, 317.701)
+width = 40.0
+width_curve = SubResource("Curve_kipdu")
+gradient = SubResource("Gradient_gumeq")
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
+script = ExtResource("1_xtpnr")
