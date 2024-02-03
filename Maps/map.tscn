@@ -1,0 +1,61 @@
+[gd_scene load_steps=3 format=3 uid="uid://cvjhd38biobos"]
+
+[ext_resource type="PackedScene" uid="uid://11xpuffjiu65" path="res://Player/player.tscn" id="1_thxb7"]
+[ext_resource type="PackedScene" uid="uid://echyfu40mue7" path="res://Platforms/platfrom.tscn" id="2_3sxka"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Player" parent="." instance=ExtResource("1_thxb7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.08576, 0)
+
+[node name="Maps" type="Node3D" parent="."]
+
+[node name="RoomOne" type="Node3D" parent="Maps"]
+
+[node name="Platfrom" parent="Maps/RoomOne" instance=ExtResource("2_3sxka")]
+transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 1)
+
+[node name="Platfrom5" parent="Maps/RoomOne" instance=ExtResource("2_3sxka")]
+transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 1, 40, 15, 1)
+
+[node name="Platfrom7" parent="Maps/RoomOne" instance=ExtResource("2_3sxka")]
+transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 1, 40, 33, 1)
+
+[node name="Platfrom6" parent="Maps/RoomOne" instance=ExtResource("2_3sxka")]
+transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 1, 40, 15, 1)
+
+[node name="Platfrom2" parent="Maps/RoomOne" instance=ExtResource("2_3sxka")]
+transform = Transform3D(-1.74846e-07, 1, 0, -4, -4.37114e-08, 0, 0, 0, 1, -19, 16, 1)
+
+[node name="Platfrom4" parent="Maps/RoomOne" instance=ExtResource("2_3sxka")]
+transform = Transform3D(-8.74228e-08, 1, 0, -2, -4.37114e-08, 0, 0, 0, 1, 19, 8, 1)
+
+[node name="Platfrom3" parent="Maps/RoomOne" instance=ExtResource("2_3sxka")]
+transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 1, 0, 33, 1)
+
+[node name="Platfrom8" parent="Maps" instance=ExtResource("2_3sxka")]
+transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 1, 80, 15, 1)
+
+[node name="Platfrom14" parent="Maps" instance=ExtResource("2_3sxka")]
+transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 1, 80, 97, 1)
+
+[node name="Platfrom12" parent="Maps" instance=ExtResource("2_3sxka")]
+transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 1, 120, 63, 1)
+
+[node name="Platfrom15" parent="Maps" instance=ExtResource("2_3sxka")]
+transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 1, 120, 97, 1)
+
+[node name="Platfrom9" parent="Maps" instance=ExtResource("2_3sxka")]
+transform = Transform3D(-1.74846e-07, 1, 0, -4, -4.37114e-08, 0, 0, 0, 1, 59, 50, 1)
+
+[node name="Platfrom13" parent="Maps" instance=ExtResource("2_3sxka")]
+transform = Transform3D(-1.74846e-07, 1, 0, -4, -4.37114e-08, 0, 0, 0, 1, 59, 82, 1)
+
+[node name="Platfrom10" parent="Maps" instance=ExtResource("2_3sxka")]
+transform = Transform3D(-1.74846e-07, 1, 0, -4, -4.37114e-08, 0, 0, 0, 1, 99, 32, 1)
+
+[node name="Platfrom11" parent="Maps" instance=ExtResource("2_3sxka")]
+transform = Transform3D(-8.74228e-08, 1, 0, -2, -4.37114e-08, 0, 0, 0, 1, 99, 56, 1)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.240888, 0.970315, -0.0215043, -0.576578, 0.160893, 0.801044, 0.780725, -0.180563, 0.598219, 0, 0, 0)

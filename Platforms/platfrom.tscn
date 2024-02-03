@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://echyfu40mue7"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_22nqr"]
+size = Vector3(8, 2, 4)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_gybiq"]
+points = PackedVector3Array(-4, -1, -2, -4, 1, -2, 4, -1, -2, -4, -1, 2, -4, 1, 2, 4, 1, -2, 4, -1, 2, 4, 1, 2)
+
+[node name="StaticBody3D" type="StaticBody3D"]
+
+[node name="Platfrom" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_22nqr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_gybiq")

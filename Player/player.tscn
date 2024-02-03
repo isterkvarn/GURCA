@@ -124,6 +124,7 @@ skin = SubResource("Skin_ejok0")
 libraries = {
 "": SubResource("AnimationLibrary_ddtxi")
 }
+speed_scale = 2.0
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.11952, 29.417)
