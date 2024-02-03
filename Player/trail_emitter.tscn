@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bratest4gpfd5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fxho4"]
+transparency = 1
+albedo_color = Color(1, 0.0862745, 0, 0.619608)
+
+[sub_resource type="Curve" id="Curve_dqja3"]
+_data = [Vector2(0, 0.698589), 0.0, 0.0, 0, 0, Vector2(0.0549738, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_dmo8b"]
+colors = PackedColorArray(0.776471, 1, 0, 1, 1, 0, 0, 1)
+
+[node name="TrailEmitter" type="TrailEmitter"]
+material = SubResource("StandardMaterial3D_fxho4")
+curve = SubResource("Curve_dqja3")
+gradient = SubResource("Gradient_dmo8b")
+geometry_nodepath = NodePath("..")
