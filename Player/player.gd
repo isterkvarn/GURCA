@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 
-const LAUNCH_FORCE = 35
+const LAUNCH_FORCE = 20
 const AIR_ROTATION_SPEED = 6
 const ROTATION_AXIS = Vector3(0, 0, 1.0)
 const BULLET_TIME_SLOW = 0.1
@@ -41,8 +41,6 @@ func _physics_process(delta):
 		if Input.is_action_just_pressed("launch"):
 			var player_pos = global_transform.origin
 			var mouse_pos_3d = get_mouse_pos_in_scene()
-			print("player",player_pos)
-			print("mouse",mouse_pos_3d)
 			var launch_vector = mouse_pos_3d - player_pos
 			
 			launch(launch_vector.normalized()*LAUNCH_FORCE)
@@ -62,7 +60,6 @@ func _physics_process(delta):
 func get_mouse_pos_in_scene():
 	var ray_length = 1000
 	var mouse_pos = get_viewport().get_mouse_position()
-	print("mouse viewport pos", mouse_pos)
 	var ray_start = camera.project_ray_origin(mouse_pos)
 	var ray_end = ray_start + camera.project_ray_normal(mouse_pos) * ray_length
 	var world3d : World3D = get_world_3d()
@@ -75,7 +72,6 @@ func get_mouse_pos_in_scene():
 	query.collide_with_areas = true
 	query.collide_with_bodies = false
 	var intersection = space_state.intersect_ray(query)
-	print(intersection)
 	if intersection == null:
 		return Vector3(0,0,0)
 	
