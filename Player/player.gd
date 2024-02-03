@@ -1,11 +1,14 @@
 extends CharacterBody3D
 
 
-const LAUNCH_FORCE = 20
+const LAUNCH_FORCE = 0.5
 const AIR_ROTATION_SPEED = 6
 const ROTATION_AXIS = Vector3(0, 0, 1.0)
 const BULLET_TIME_SLOW = 0.1
 const BULLET_TIME_JUICE_DRAIN = 1
+
+const MAX_CHARGE = 100
+
 
 @onready var collision_shape = $CollisionShape3D
 @onready var camera = $Camera3D
@@ -16,6 +19,8 @@ var juice_points = MAX_JUICE_POINTS
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+var charging_jump = false
+var curr_charge_time = 0
 
 func _ready():
 	juice_bar.max_value = MAX_JUICE_POINTS
@@ -47,12 +52,24 @@ func _physics_process(delta):
 		collision_shape.rotation = Vector3.ZERO
 	
 		# Check for launch input
-		if Input.is_action_just_pressed("launch"):
+		if Input.is_action_pressed("launch"):
+			if !charging_jump:
+				charging_jump = true
+				curr_charge_time = 0
+			curr_charge_time += 1
+			if curr_charge_time >= MAX_CHARGE:
+				curr_charge_time = MAX_CHARGE
+			
+			
+		
+		if Input.is_action_just_released("launch"):
+			charging_jump = false
+			
+
 			var player_pos = global_transform.origin
 			var mouse_pos_3d = get_mouse_pos_in_scene()
-			var launch_vector = mouse_pos_3d - player_pos
-			
-			launch(launch_vector.normalized()*LAUNCH_FORCE)
+			var launch_vector = (mouse_pos_3d - player_pos).normalized()
+			launch(launch_vector)
 
 	# Save velocity to use for bounce
 	var saved_velocity = velocity
@@ -87,7 +104,8 @@ func get_mouse_pos_in_scene():
 	return space_state.intersect_ray(query)["position"]
 	
 func launch(launch_direction):
-	velocity += LAUNCH_FORCE * launch_direction.normalized()
+	var curr_force = LAUNCH_FORCE  * curr_charge_time
+	velocity += curr_force * launch_direction.normalized()
 	
 func do_rotation(delta):
 	# Rotate towards movement direction
