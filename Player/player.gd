@@ -8,6 +8,9 @@ const BULLET_TIME_SLOW = 0.1
 
 @onready var collision_shape = $CollisionShape3D
 
+const MAX_JUICE_POINTS = 100
+var juice_points = MAX_JUICE_POINTS
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
