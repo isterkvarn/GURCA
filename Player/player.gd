@@ -10,13 +10,15 @@ const CHARGE_SPEED = 60
 const DASH_COST = 5
 const LAUNCH_MAX_COOLDOWN = 1
 
-const MAX_CHARGE = 100
+const CHARGE_VECTOR_CONSTANT = 0.5
+const MAX_CHARGE = 80
 const MIN_CHARGE = 20
 
 @onready var collision_shape = $CollisionShape3D
 @onready var camera = $Camera3D
 @onready var juice_bar = $Camera3D/Control/JuiceBar
 @onready var charge_bar = $Camera3D/Control/Chargebar
+@onready var arrow_node = $ArrowNode
 @onready var animator = $CollisionShape3D/cumber/AnimationPlayer
 
 const MAX_JUICE_POINTS = 100
@@ -40,6 +42,9 @@ func _physics_process(delta):
 	# Never move in z
 	velocity.z = 0
 	
+	#Handle drawing arrow
+	if(charging_jump):
+		handle_arrow_animation()
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta
@@ -52,6 +57,7 @@ func _physics_process(delta):
 		velocity.x = 0
 		velocity.y = 0
 		
+
 		# Stand upright if on foor
 		var mouse_direction = get_mouse_pos_in_scene() - global_transform.origin
 		if mouse_direction.x > 0:
@@ -84,6 +90,7 @@ func _physics_process(delta):
 		
 	if Input.is_action_just_released("launch") and curr_charge_time > 0:
 		charging_jump = false
+		arrow_node.visible = false
 		Engine.time_scale = 1.0
 		
 		var player_pos = global_transform.origin
@@ -103,6 +110,19 @@ func _physics_process(delta):
 			var bounce_direction = collision.get_collider(0).global_position.direction_to(global_position)
 			velocity = saved_velocity.length()*0.5*bounce_direction
 
+func handle_arrow_animation():
+	arrow_node.visible = true
+	var arrow = arrow_node.get_node("Arrow")
+	var charge_percent = float(curr_charge_time)/float(MAX_CHARGE)
+	var animation = arrow.get_node("AnimationPlayer")
+	if(!animation.is_playing()):
+		animation.play("arrow_longer")
+	animation.seek(charge_percent,true,true)
+	var player_pos = global_transform.origin
+	var mouse_pos_3d = get_mouse_pos_in_scene()
+	var launch_vector = (mouse_pos_3d - player_pos)
+	arrow_node.look_at(mouse_pos_3d)
+
 func get_mouse_pos_in_scene():
 	var ray_length = 1000
 	var mouse_pos = get_viewport().get_mouse_position()
@@ -118,7 +138,7 @@ func get_mouse_pos_in_scene():
 	query.collide_with_areas = true
 	query.collide_with_bodies = false
 	var intersection = space_state.intersect_ray(query)
-	if intersection == null:
+	if intersection == {}:
 		return Vector3(0,0,0)
 	
 	return space_state.intersect_ray(query)["position"]
