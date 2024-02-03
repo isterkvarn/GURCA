@@ -80,7 +80,7 @@ _data = {
 [sub_resource type="BoxShape3D" id="BoxShape3D_nvcnw"]
 size = Vector3(100, 100, 0)
 
-[node name="Player" type="CharacterBody3D"]
+[node name="Player" type="CharacterBody3D" groups=["Player"]]
 script = ExtResource("1_d5krx")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
