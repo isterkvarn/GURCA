@@ -16,6 +16,7 @@ height = 3.0
 size = Vector3(50, 50, 0)
 
 [node name="Player" type="CharacterBody3D"]
+collision_mask = 5
 script = ExtResource("1_d5krx")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -41,6 +42,7 @@ offset_right = 195.0
 offset_bottom = 27.0
 
 [node name="Chargebar" type="ProgressBar" parent="Camera3D/Control"]
+layout_mode = 0
 offset_top = 33.0
 offset_right = 195.0
 offset_bottom = 60.0

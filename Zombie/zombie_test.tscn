@@ -1,0 +1,76 @@
+[gd_scene load_steps=7 format=3 uid="uid://b5kcdh8ngs24k"]
+
+[ext_resource type="PackedScene" uid="uid://11xpuffjiu65" path="res://Player/player.tscn" id="1_p4lpe"]
+[ext_resource type="PackedScene" uid="uid://v1gij5hbryqi" path="res://Zombie/zombie.tscn" id="2_cqjvc"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_8aynq"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ayxlg"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_o2qhw"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wtao3"]
+
+[node name="ZombieTest" type="Node3D"]
+
+[node name="Level" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Level"]
+transform = Transform3D(200, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_8aynq")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Level/MeshInstance3D"]
+collision_layer = 4
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/MeshInstance3D/StaticBody3D"]
+shape = SubResource("BoxShape3D_ayxlg")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 1, 0)
+mesh = SubResource("BoxMesh_o2qhw")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Level/MeshInstance3D2"]
+collision_layer = 4
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/MeshInstance3D2/StaticBody3D"]
+shape = SubResource("BoxShape3D_wtao3")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, 0)
+mesh = SubResource("BoxMesh_o2qhw")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Level/MeshInstance3D3"]
+collision_layer = 4
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/MeshInstance3D3/StaticBody3D"]
+shape = SubResource("BoxShape3D_wtao3")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Level"]
+transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 1, -5, 6, 0)
+mesh = SubResource("BoxMesh_o2qhw")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Level/MeshInstance3D4"]
+collision_layer = 4
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/MeshInstance3D4/StaticBody3D"]
+shape = SubResource("BoxShape3D_wtao3")
+
+[node name="Player" parent="." instance=ExtResource("1_p4lpe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.13658, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.585679, 0.810543, 0, -0.810543, 0.585679, 0, 9.38985, 7.80583)
+
+[node name="Zombie" parent="." instance=ExtResource("2_cqjvc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.77448, 4.15638, -0.0125803)
+
+[node name="Zombie2" parent="." instance=ExtResource("2_cqjvc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.7745, 4.15638, -0.0125803)
+
+[node name="Zombie3" parent="." instance=ExtResource("2_cqjvc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.94899, 7.68182, -0.0125803)
