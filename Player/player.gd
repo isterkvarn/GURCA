@@ -12,6 +12,9 @@ const MAX_CHARGE = 100
 @onready var collision_shape = $CollisionShape3D
 @onready var camera = $Camera3D
 
+const MAX_JUICE_POINTS = 100
+var juice_points = MAX_JUICE_POINTS
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var charging_jump = false
@@ -56,10 +59,7 @@ func _physics_process(delta):
 
 			var player_pos = global_transform.origin
 			var mouse_pos_3d = get_mouse_pos_in_scene()
-			print("player",player_pos)
-			print("mouse",mouse_pos_3d)
 			var launch_vector = (mouse_pos_3d - player_pos).normalized()
-			print("launc",launch_vector)
 			launch(launch_vector)
 
 	# Save velocity to use for bounce
@@ -77,7 +77,6 @@ func _physics_process(delta):
 func get_mouse_pos_in_scene():
 	var ray_length = 1000
 	var mouse_pos = get_viewport().get_mouse_position()
-	print("mouse viewport pos", mouse_pos)
 	var ray_start = camera.project_ray_origin(mouse_pos)
 	var ray_end = ray_start + camera.project_ray_normal(mouse_pos) * ray_length
 	var world3d : World3D = get_world_3d()
@@ -90,7 +89,6 @@ func get_mouse_pos_in_scene():
 	query.collide_with_areas = true
 	query.collide_with_bodies = false
 	var intersection = space_state.intersect_ray(query)
-	print(intersection)
 	if intersection == null:
 		return Vector3(0,0,0)
 	
