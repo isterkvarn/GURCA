@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://v1gij5hbryqi"]
+[gd_scene load_steps=8 format=3 uid="uid://v1gij5hbryqi"]
 
 [ext_resource type="Script" path="res://Zombie/zombie.gd" id="1_j6a5u"]
 [ext_resource type="ArrayMesh" uid="uid://i00ejuy2envg" path="res://Zombie/zombie.obj" id="2_gcvix"]
@@ -11,6 +11,16 @@ radius = 0.75
 script/source = "extends CollisionShape3D
 
 "
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qy4kc"]
+albedo_color = Color(0.690196, 0.431373, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yi507"]
+albedo_color = Color(0, 0.713726, 0.14902, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l4u01"]
+albedo_color = Color(0.0901961, 0, 0, 1)
+metallic = 1.0
 
 [node name="Zombie" type="CharacterBody3D" groups=["zombie"]]
 collision_layer = 2
@@ -25,13 +35,16 @@ script = SubResource("GDScript_gimvv")
 [node name="Rays" type="Node3D" parent="."]
 
 [node name="RayRight" type="RayCast3D" parent="Rays"]
-transform = Transform3D(0.707107, -1.41421, 0, 0.707107, 1.41421, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(0.707107, -2.12132, 0, 0.707107, 2.12132, 0, 0, 0, 1, 0, 0, 0)
 collision_mask = 4
 
 [node name="RayLeft" type="RayCast3D" parent="Rays"]
-transform = Transform3D(-0.707107, 1.41421, -8.74228e-08, 0.707107, 1.41421, 0, 6.18172e-08, -1.23634e-07, -1, 0, 0, 0)
+transform = Transform3D(-0.707107, 2.12132, -1.50996e-07, 0.707107, 2.12132, 1.50729e-14, 1.0677e-07, -3.2031e-07, -1, 0, 0, 0)
 collision_mask = 4
 
 [node name="Zombie" type="MeshInstance3D" parent="."]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = ExtResource("2_gcvix")
+surface_material_override/0 = SubResource("StandardMaterial3D_qy4kc")
+surface_material_override/1 = SubResource("StandardMaterial3D_yi507")
+surface_material_override/2 = SubResource("StandardMaterial3D_l4u01")
