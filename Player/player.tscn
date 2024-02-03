@@ -79,9 +79,10 @@ _data = {
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nvcnw"]
-size = Vector3(100, 100, 0)
+size = Vector3(400, 400, 0)
 
 [node name="Player" type="CharacterBody3D" groups=["Player"]]
+collision_mask = 4
 script = ExtResource("1_d5krx")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -106,7 +107,7 @@ bones/1/parent = 0
 bones/1/rest = Transform3D(1, 5.22403e-08, 5.79364e-09, -5.22403e-08, 0.9757, 0.219112, 5.79362e-09, -0.219112, 0.9757, 0, 2.29202, 2.98023e-08)
 bones/1/enabled = true
 bones/1/position = Vector3(0, 2.29202, 2.98023e-08)
-bones/1/rotation = Quaternion(-0.110228, 4.16598e-15, -2.62803e-08, 0.993906)
+bones/1/rotation = Quaternion(-0.110228, 3.85741e-15, -2.62803e-08, 0.993906)
 bones/1/scale = Vector3(1, 1, 1)
 bones/2/name = "Bone.002"
 bones/2/parent = 1
@@ -128,7 +129,7 @@ libraries = {
 speed_scale = 2.0
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.11952, 29.417)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.11952, 41.9728)
 current = true
 
 [node name="Control" type="Control" parent="Camera3D"]

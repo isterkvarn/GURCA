@@ -28,6 +28,12 @@ bullet_time={
 ]
 }
 
+[layer_names]
+
+3d_physics/layer_1="Cucumber"
+3d_physics/layer_2="Zombie"
+3d_physics/layer_3="Level"
+
 [physics]
 
 3d/default_gravity=19.6

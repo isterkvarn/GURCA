@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://kder1b4p7tvw"]
+
+[ext_resource type="Script" path="res://Player/cucumber_aoe.gd" id="1_u8fpd"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wdstk"]
+size = Vector3(10, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_653aq"]
+transparency = 1
+albedo_color = Color(1, 0, 0.215686, 0.223529)
+
+[sub_resource type="BoxMesh" id="BoxMesh_vg7oa"]
+material = SubResource("StandardMaterial3D_653aq")
+size = Vector3(10, 1, 1)
+
+[node name="CucumberAoe" type="Area3D"]
+collision_mask = 2
+script = ExtResource("1_u8fpd")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_wdstk")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_vg7oa")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

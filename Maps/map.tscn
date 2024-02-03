@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cvjhd38biobos"]
+[gd_scene load_steps=5 format=3 uid="uid://cvjhd38biobos"]
 
 [ext_resource type="PackedScene" uid="uid://11xpuffjiu65" path="res://Player/player.tscn" id="1_thxb7"]
 [ext_resource type="PackedScene" uid="uid://echyfu40mue7" path="res://Platforms/platfrom.tscn" id="2_3sxka"]
 [ext_resource type="PackedScene" uid="uid://cy08ddiag1tdh" path="res://Jar/juice_jar.tscn" id="3_wtrmi"]
+[ext_resource type="PackedScene" uid="uid://v1gij5hbryqi" path="res://Zombie/zombie.tscn" id="4_07ca8"]
 
 [node name="Node3D" type="Node3D"]
 
@@ -109,6 +110,71 @@ transform = Transform3D(-1.74846e-07, 1, 0, -4, -4.37114e-08, 0, 0, 0, 1, 246, 7
 
 [node name="JuiceJar" parent="Maps/Room3" instance=ExtResource("3_wtrmi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 226, 77, 0)
+
+[node name="Room4" type="Node3D" parent="Maps"]
+
+[node name="Platfrom31" parent="Maps/Room4" instance=ExtResource("2_3sxka")]
+transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 1, 305.202, 62.9889, 1)
+
+[node name="Platfrom32" parent="Maps/Room4" instance=ExtResource("2_3sxka")]
+transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 1, 345, 63, 1)
+
+[node name="Platfrom34" parent="Maps/Room4" instance=ExtResource("2_3sxka")]
+transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 1, 304, 129, 1)
+
+[node name="Platfrom35" parent="Maps/Room4" instance=ExtResource("2_3sxka")]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 1, 333, 99, 1)
+
+[node name="Platfrom36" parent="Maps/Room4" instance=ExtResource("2_3sxka")]
+transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 1, 385, 79, 1)
+
+[node name="Platfrom39" parent="Maps/Room4" instance=ExtResource("2_3sxka")]
+transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 1, 361, 115, 1)
+
+[node name="Platfrom40" parent="Maps/Room4" instance=ExtResource("2_3sxka")]
+transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 1, 401, 115, 1)
+
+[node name="Platfrom37" parent="Maps/Room4" instance=ExtResource("2_3sxka")]
+transform = Transform3D(-1.74846e-07, 1, 0, -4, -4.37114e-08, 0, 0, 0, 1, 324, 114, 1)
+
+[node name="Platfrom38" parent="Maps/Room4" instance=ExtResource("2_3sxka")]
+transform = Transform3D(-8.74228e-08, 1, 0, -2, -4.37114e-08, 0, 0, 0, 1, 342, 106, 1)
+
+[node name="Platfrom28" parent="Maps/Room4" instance=ExtResource("2_3sxka")]
+transform = Transform3D(-1.74846e-07, 1, 0, -4, -4.37114e-08, 0, 0, 0, 1, 284.151, 78, 1)
+
+[node name="Platfrom33" parent="Maps/Room4" instance=ExtResource("2_3sxka")]
+transform = Transform3D(-8.74228e-08, 1, 0, -2, -4.37114e-08, 0, 0, 0, 1, 364, 72, 1)
+
+[node name="Zombie" parent="Maps/Room4" instance=ExtResource("4_07ca8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 320, 66, 0)
+
+[node name="Zombie2" parent="Maps/Room4" instance=ExtResource("4_07ca8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 330, 66, 0)
+
+[node name="Zombie3" parent="Maps/Room4" instance=ExtResource("4_07ca8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 340, 66, 0)
+
+[node name="Zombie4" parent="Maps/Room4" instance=ExtResource("4_07ca8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 349, 66, 0)
+
+[node name="Zombie5" parent="Maps/Room4" instance=ExtResource("4_07ca8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 305, 66, 0)
+
+[node name="Zombie6" parent="Maps/Room4" instance=ExtResource("4_07ca8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 297, 66, 0)
+
+[node name="Zombie7" parent="Maps/Room4" instance=ExtResource("4_07ca8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 312, 66, 0)
+
+[node name="Zombie8" parent="Maps/Room4" instance=ExtResource("4_07ca8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 379, 82, 0)
+
+[node name="Zombie9" parent="Maps/Room4" instance=ExtResource("4_07ca8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 391, 82, 0)
+
+[node name="Zombie10" parent="Maps/Room4" instance=ExtResource("4_07ca8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 370, 82, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.240888, 0.970315, -0.0215043, -0.576578, 0.160893, 0.801044, 0.780725, -0.180563, 0.598219, 0, 0, 0)

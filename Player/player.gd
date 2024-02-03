@@ -5,11 +5,11 @@ const LAUNCH_FORCE = 0.5
 const AIR_ROTATION_SPEED = 6
 const ROTATION_AXIS = Vector3(0, 0, 1.0)
 const BULLET_TIME_SLOW = 0.1
-const BULLET_TIME_JUICE_DRAIN = 20
-const JUICE_REGEN = 10
-const CHARGE_SPEED = 60
+const BULLET_TIME_JUICE_DRAIN = 60
+const JUICE_REGEN = 80
+const CHARGE_SPEED = 80
 const DASH_COST = 5
-const LAUNCH_MAX_COOLDOWN = 1
+const LAUNCH_MAX_COOLDOWN = 0.6
 
 const CHARGE_VECTOR_CONSTANT = 0.5
 const MAX_CHARGE = 80
@@ -22,6 +22,8 @@ const MIN_CHARGE = 20
 @onready var arrow_node = $ArrowNode
 @onready var animator = $CollisionShape3D/cumber/AnimationPlayer
 
+@onready var aoe_scene = preload("res://Player/cucumber_aoe.tscn")
+
 const MAX_JUICE_POINTS = 100
 var juice_points = MAX_JUICE_POINTS
 
@@ -30,6 +32,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var charging_jump = false
 var curr_charge_time = 0
 var launch_cooldown = 0
+var doing_aoe = false
 
 func _ready():
 	juice_bar.max_value = MAX_JUICE_POINTS
@@ -56,6 +59,10 @@ func _physics_process(delta):
 		do_rotation(delta)
 	
 	else:
+		if doing_aoe:
+			spawn_aoe()
+			doing_aoe = false
+		
 		juice_points += JUICE_REGEN*delta
 		
 		# Stop if on floor
@@ -72,7 +79,7 @@ func _physics_process(delta):
 
 		if Input.is_action_pressed("launch") and curr_charge_time > 0:
 			animator.play("ArmatureAction")
-			
+		
 		if Input.is_action_just_released("launch"):
 			animator.stop()
 	
@@ -92,11 +99,13 @@ func _physics_process(delta):
 		if curr_charge_time >= MAX_CHARGE:
 			curr_charge_time = MAX_CHARGE
 
-		
 	if Input.is_action_just_released("launch") and curr_charge_time > 0:
 		charging_jump = false
 		arrow_node.visible = false
 		Engine.time_scale = 1.0
+		
+		if not is_on_floor():
+			doing_aoe = true
 		
 		var player_pos = global_transform.origin
 		var mouse_pos_3d = get_mouse_pos_in_scene()
@@ -170,3 +179,8 @@ func update_juicebar():
 func add_juice(amount):
 	juice_points += amount
 	juice_points = clamp(juice_points, 0, MAX_JUICE_POINTS)
+
+func spawn_aoe():
+	var aoe_instance = aoe_scene.instantiate()
+	aoe_instance.set_position(position)
+	get_tree().get_root().add_child(aoe_instance)
