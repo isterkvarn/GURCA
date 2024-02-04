@@ -10,6 +10,7 @@ const JUICE_REGEN = 80
 const CHARGE_SPEED = 80
 const DASH_COST = 5
 const LAUNCH_MAX_COOLDOWN = 0.6
+const ZOMBIES_REQUIRED = 10
 
 const CHARGE_VECTOR_CONSTANT = 0.5
 const MAX_CHARGE = 80
@@ -17,20 +18,24 @@ const MIN_CHARGE = 20
 
 @onready var collision_shape = $CollisionShape3D
 @onready var camera = $Camera3D
-@onready var juice_bar = $Camera3D/Control/JuiceBar
-@onready var charge_bar = $Camera3D/Control/Chargebar
+@onready var juice_bar = $Camera3D/Control/Node2D/JuiceBar
+@onready var zombies_uitext = $Camera3D/Control/AlienUI/RichTextLabel
+
 @onready var arrow_node = $ArrowNode
 @onready var animator = $CollisionShape3D/cumber/AnimationPlayer
 @onready var charge_audio = $ChargeAudio
 @onready var launch_audio = $LaunchAudio
 @onready var slowmo_audio = $SlowmoAudio
 @onready var explosion_audio = $ExplosionAudio
+@onready var zombie_audio = $ZombieAudio
 
 @onready var aoe_scene = preload("res://Player/cucumber_aoe.tscn")
 @onready var aoe_par = preload("res://explosion_particles.tscn")
 
 const MAX_JUICE_POINTS = 100
 var juice_points = MAX_JUICE_POINTS
+
+var zombies_killed = 0
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -43,7 +48,10 @@ var current_trail = Trail
 
 func _ready():
 	juice_bar.max_value = MAX_JUICE_POINTS
-	charge_bar.max_value = MAX_CHARGE
+	update_zombie_text()
+
+func update_zombie_text():
+	zombies_uitext.text = "x " + str(zombies_killed) + " / " + str(ZOMBIES_REQUIRED)
 
 func _physics_process(delta):
 	# Clamp juice
@@ -185,16 +193,23 @@ func do_rotation(delta):
 
 func update_juicebar():
 	juice_bar.value = juice_points
-	charge_bar.value = curr_charge_time
+
 
 func add_juice(amount):
 	juice_points += amount
 	juice_points = clamp(juice_points, 0, MAX_JUICE_POINTS)
 
+func zombie_killed():
+	zombie_audio.play()
+	zombies_killed += 1
+	update_zombie_text()
+
 func spawn_aoe():
 	explosion_audio.play()
 	var aoe_instance = aoe_scene.instantiate()
 	aoe_instance.set_position(position)
+	aoe_instance.hit_zombie.connect(zombie_killed)
+
 	get_tree().get_root().add_child(aoe_instance)
 	var particles = aoe_par.instantiate()
 	particles.set_position(position)

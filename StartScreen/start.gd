@@ -11,8 +11,8 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
-	
-	
+
+
 func _input(event):
 	if not event is InputEventMouseMotion:
 		get_tree().root.add_child(map_scene.instantiate())

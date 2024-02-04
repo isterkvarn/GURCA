@@ -2,6 +2,7 @@ extends Area3D
 
 const MAX_ANGLE = 45.0
 const SPEED = 20.0
+signal hit_zombie
 
 @onready var shape = $"CollisionShape3D"
 @onready var width = shape.shape.extents.x
@@ -31,4 +32,5 @@ func _on_body_entered(body):
 
 	var dir = Vector3(sin(angle + PI) * SPEED, cos(angle) * SPEED, 25.0)
 
+	hit_zombie.emit()
 	body.take_attack(dir)
