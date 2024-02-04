@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://cvjhd38biobos"]
+[gd_scene load_steps=7 format=3 uid="uid://cvjhd38biobos"]
 
 [ext_resource type="PackedScene" uid="uid://11xpuffjiu65" path="res://Player/player.tscn" id="1_thxb7"]
 [ext_resource type="PackedScene" uid="uid://echyfu40mue7" path="res://Platforms/platfrom.tscn" id="2_3sxka"]
 [ext_resource type="PackedScene" uid="uid://cy08ddiag1tdh" path="res://Jar/juice_jar.tscn" id="3_wtrmi"]
 [ext_resource type="PackedScene" uid="uid://v1gij5hbryqi" path="res://Zombie/zombie.tscn" id="4_07ca8"]
+[ext_resource type="AudioStream" uid="uid://nyo83nyd0gnj" path="res://Sounds/GURCAN.mp3" id="5_jbbqa"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_a20y8"]
 _surfaces = [{
@@ -262,3 +263,8 @@ transform = Transform3D(0.240888, 0.970315, -0.0215043, -0.576578, 0.160893, 0.8
 [node name="Blocks" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 122.921, 131.263, 207.75)
 mesh = SubResource("ArrayMesh_a20y8")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_jbbqa")
+volume_db = -18.0
+autoplay = true
