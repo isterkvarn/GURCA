@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://co0s1nq4to8ep"]
+
+[ext_resource type="Script" path="res://Goal/goal.gd" id="1_nqe1u"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_rrwr4"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_xoxd3"]
+points = PackedVector3Array(0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5)
+
+[node name="Goal" type="Area3D"]
+script = ExtResource("1_nqe1u")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_rrwr4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_xoxd3")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

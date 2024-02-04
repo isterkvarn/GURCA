@@ -27,6 +27,7 @@ const MIN_CHARGE = 20
 @onready var launch_audio = $LaunchAudio
 @onready var slowmo_audio = $SlowmoAudio
 @onready var explosion_audio = $ExplosionAudio
+@onready var goal = %Goal
 
 
 @onready var aoe_scene = preload("res://Player/cucumber_aoe.tscn")
@@ -49,7 +50,11 @@ var current_trail = Trail
 func _ready():
 	juice_bar.max_value = MAX_JUICE_POINTS
 	update_zombie_text()
+	goal.winning.connect(winning)
 
+func winning():
+	if zombies_killed >= ZOMBIES_REQUIRED:
+		print("epic win")
 
 func _on_body_entered(body):
 	print(body.name)
