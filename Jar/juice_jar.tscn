@@ -21,6 +21,7 @@ bottom_radius = 0.55
 height = 0.3
 
 [node name="JuiceJar" type="Area3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 script = ExtResource("1_e4yvl")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
