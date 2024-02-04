@@ -28,6 +28,7 @@ const MIN_CHARGE = 20
 @onready var slowmo_audio = $SlowmoAudio
 @onready var explosion_audio = $ExplosionAudio
 @onready var goal = %Goal
+@onready var map_scene = preload("res://StartScreen/start.tscn")
 
 
 @onready var aoe_scene = preload("res://Player/cucumber_aoe.tscn")
@@ -54,6 +55,8 @@ func _ready():
 
 func winning():
 	if zombies_killed >= ZOMBIES_REQUIRED:
+		get_tree().root.add_child(map_scene.instantiate())
+		get_node("/root/Start").free()
 		print("epic win")
 
 func _on_body_entered(body):
