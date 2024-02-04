@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://colt0amva3bd8" path="res://Checkpoints/death_pit.tscn" id="6_g8gbf"]
 [ext_resource type="PackedScene" uid="uid://c24x20oiy1fk5" path="res://Checkpoints/checkpoint_daddy.tscn" id="7_6r6js"]
 [ext_resource type="PackedScene" uid="uid://dganmmbykwj1" path="res://Checkpoints/checkpoint.tscn" id="8_6o65w"]
-[ext_resource type="PackedScene" path="res://Platforms/grid_map_platforms.tscn" id="9_l6rhs"]
+[ext_resource type="PackedScene" uid="uid://cevuadsi7m068" path="res://Platforms/grid_map_platforms.tscn" id="9_l6rhs"]
 [ext_resource type="PackedScene" uid="uid://co0s1nq4to8ep" path="res://Goal/goal.tscn" id="9_sod2d"]
 
 [node name="Node3D" type="Node3D"]
@@ -113,7 +113,7 @@ transform = Transform3D(-1.74846e-07, 1, 0, -4, -4.37114e-08, 0, 0, 0, 1, 246, 4
 transform = Transform3D(-1.74846e-07, 1, 0, -4, -4.37114e-08, 0, 0, 0, 1, 246, 78, 1)
 
 [node name="JuiceJar" parent="Maps/Room3" instance=ExtResource("3_wtrmi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 226, 77, 0)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 226, 77, 0)
 
 [node name="Room4" type="Node3D" parent="Maps"]
 
@@ -384,22 +384,22 @@ transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 1, 858, 146, 1)
 transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 1, 818, 146, 1)
 
 [node name="JuiceJar2" parent="Maps/Room5" instance=ExtResource("3_wtrmi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 701, 32, 0)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 701, 32, 0)
 
 [node name="JuiceJar3" parent="Maps/Room5" instance=ExtResource("3_wtrmi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 748, 79, 0)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 748, 79, 0)
 
 [node name="JuiceJar5" parent="Maps/Room5" instance=ExtResource("3_wtrmi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 726, 53, 0)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 726, 53, 0)
 
 [node name="JuiceJar6" parent="Maps/Room5" instance=ExtResource("3_wtrmi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 778, 93, 0)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 778, 93, 0)
 
 [node name="JuiceJar7" parent="Maps/Room5" instance=ExtResource("3_wtrmi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 849, 65, 0)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 849, 65, 0)
 
 [node name="JuiceJar8" parent="Maps/Room5" instance=ExtResource("3_wtrmi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 863, 48, 0)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 863, 48, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.240888, 0.970315, -0.0215043, -0.576578, 0.160893, 0.801044, 0.780725, -0.180563, 0.598219, 0, 0, 0)

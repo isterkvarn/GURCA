@@ -28,7 +28,7 @@ const MIN_CHARGE = 20
 @onready var slowmo_audio = $SlowmoAudio
 @onready var explosion_audio = $ExplosionAudio
 @onready var goal = %Goal
-@onready var map_scene = preload("res://StartScreen/start.tscn")
+@onready var map_scene = load("res://StartScreen/start.tscn")
 
 
 @onready var aoe_scene = preload("res://Player/cucumber_aoe.tscn")
