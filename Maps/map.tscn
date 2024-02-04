@@ -1,10 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://cvjhd38biobos"]
+[gd_scene load_steps=10 format=3 uid="uid://cvjhd38biobos"]
 
 [ext_resource type="PackedScene" uid="uid://11xpuffjiu65" path="res://Player/player.tscn" id="1_thxb7"]
 [ext_resource type="PackedScene" uid="uid://echyfu40mue7" path="res://Platforms/platfrom.tscn" id="2_3sxka"]
 [ext_resource type="PackedScene" uid="uid://cy08ddiag1tdh" path="res://Jar/juice_jar.tscn" id="3_wtrmi"]
 [ext_resource type="PackedScene" uid="uid://v1gij5hbryqi" path="res://Zombie/zombie.tscn" id="4_07ca8"]
 [ext_resource type="AudioStream" uid="uid://nyo83nyd0gnj" path="res://Sounds/GURCAN.mp3" id="5_jbbqa"]
+[ext_resource type="PackedScene" uid="uid://colt0amva3bd8" path="res://Checkpoints/death_pit.tscn" id="6_g8gbf"]
+[ext_resource type="PackedScene" uid="uid://c24x20oiy1fk5" path="res://Checkpoints/checkpoint_daddy.tscn" id="7_6r6js"]
+[ext_resource type="PackedScene" uid="uid://dganmmbykwj1" path="res://Checkpoints/checkpoint.tscn" id="8_6o65w"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_a20y8"]
 _surfaces = [{
@@ -89,6 +92,7 @@ _surfaces = [{
 [node name="Node3D" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("1_thxb7")]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.08576, 0)
 
 [node name="Maps" type="Node3D" parent="."]
@@ -268,3 +272,12 @@ mesh = SubResource("ArrayMesh_a20y8")
 stream = ExtResource("5_jbbqa")
 volume_db = -18.0
 autoplay = true
+
+[node name="DeathPit" parent="." instance=ExtResource("6_g8gbf")]
+transform = Transform3D(4.4, 0, 0, 0, 1, 0, 0, 0, 1, 224, -3, 0)
+
+[node name="CheckpointDaddy" parent="." instance=ExtResource("7_6r6js")]
+unique_name_in_owner = true
+
+[node name="Checkpoint" parent="CheckpointDaddy" instance=ExtResource("8_6o65w")]
+transform = Transform3D(1, 0, 0, 0, 1.4, 0, 0, 0, 1, 185, 48, 0)
