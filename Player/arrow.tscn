@@ -1,8 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://dre7inij60tcq"]
+[gd_scene load_steps=8 format=3 uid="uid://dre7inij60tcq"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_ihbtc"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e2r6g"]
+albedo_color = Color(0.45098, 0.937255, 0.968627, 1)
+
 [sub_resource type="PrismMesh" id="PrismMesh_k7nn1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yk6bn"]
+albedo_color = Color(0.45098, 0.937255, 0.968627, 1)
 
 [sub_resource type="Animation" id="Animation_0illp"]
 length = 0.001
@@ -42,10 +48,12 @@ _data = {
 [node name="ArrowBody" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.1, 0, 0, 0, 3, 0, 0, 0, 0.1, 0, 1.54717, 0)
 mesh = SubResource("BoxMesh_ihbtc")
+surface_material_override/0 = SubResource("StandardMaterial3D_e2r6g")
 
 [node name="ArrowHead" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.1, 0, 3.16585, 0)
 mesh = SubResource("PrismMesh_k7nn1")
+surface_material_override/0 = SubResource("StandardMaterial3D_yk6bn")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
