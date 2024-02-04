@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_d5krx"]
 [ext_resource type="Texture2D" uid="uid://cdc4pc1yewkov" path="res://Player/cumber.png" id="2_kc42m"]
-[ext_resource type="Texture2D" uid="uid://b00xts50ucas2" path="res://background.png" id="3_2crqw"]
 [ext_resource type="PackedScene" uid="uid://dre7inij60tcq" path="res://Player/arrow.tscn" id="3_fxksj"]
 [ext_resource type="Texture2D" uid="uid://h4pliem3ft75" path="res://Player/textures/pickle_foreground.png" id="3_o0877"]
 [ext_resource type="Texture2D" uid="uid://d2pfucj8ef5as" path="res://Player/textures/pickle_fill.png" id="4_brpg8"]
@@ -10,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://hkjfseywwt7a" path="res://Player/textures/alien.png" id="5_hckm0"]
 [ext_resource type="AudioStream" uid="uid://dw4vkpulpfyov" path="res://Sounds/Charge.mp3" id="6_4b46y"]
 [ext_resource type="AudioStream" uid="uid://mtkeyvsqa446" path="res://Sounds/Launch.mp3" id="7_3gdie"]
+[ext_resource type="Texture2D" uid="uid://b1csl1bwwvcky" path="res://background2.png" id="7_ge5aw"]
 [ext_resource type="AudioStream" uid="uid://ocnxsmpdbhok" path="res://Sounds/slowmo.mp3" id="8_uqd88"]
 [ext_resource type="AudioStream" uid="uid://bpqilcfvwfl4n" path="res://Sounds/Explosion.mp3" id="9_wsaaa"]
 
@@ -93,7 +93,7 @@ size = Vector3(400, 400, 0)
 [sub_resource type="MeshTexture" id="MeshTexture_ybyje"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b0wxq"]
-albedo_texture = ExtResource("3_2crqw")
+albedo_texture = ExtResource("7_ge5aw")
 ao_light_affect = 0.33
 ao_texture = SubResource("MeshTexture_ybyje")
 
