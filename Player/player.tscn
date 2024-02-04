@@ -157,7 +157,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Node2D" type="Node2D" parent="Camera3D/Control"]
-scale = Vector2(0.36, 0.36)
+scale = Vector2(0.195, 0.195)
 
 [node name="JuiceBar" type="TextureProgressBar" parent="Camera3D/Control/Node2D"]
 anchors_preset = -1
