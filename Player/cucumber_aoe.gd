@@ -31,7 +31,8 @@ func _on_body_entered(body):
 	var zombie_pos = (position.x - body.get_position().x) / width
 	var angle = deg_to_rad(MAX_ANGLE * zombie_pos)
 
-	var dir = Vector3(sin(angle + PI) * SPEED, cos(angle) * SPEED, 0)
+	var dir = Vector3(sin(angle + PI) * SPEED, cos(angle) * SPEED, 25.0)
+
 	hit_zombie.emit()
 	zombie_audio.play()
 	body.take_attack(dir)
