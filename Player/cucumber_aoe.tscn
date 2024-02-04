@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://82u14nu8gm8x"]
+[gd_scene load_steps=6 format=3 uid="uid://82u14nu8gm8x"]
 
 [ext_resource type="Script" path="res://Player/cucumber_aoe.gd" id="1_u8fpd"]
+[ext_resource type="AudioStream" uid="uid://d1afx3waf0dda" path="res://Sounds/Zombie Death.mp3" id="2_rpdar"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wdstk"]
 size = Vector3(10, 1, 1)
@@ -22,5 +23,10 @@ shape = SubResource("BoxShape3D_wdstk")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_vg7oa")
+
+[node name="ZombieDeath" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_rpdar")
+volume_db = 35.0
+max_polyphony = 2
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

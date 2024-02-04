@@ -27,7 +27,7 @@ const MIN_CHARGE = 20
 @onready var launch_audio = $LaunchAudio
 @onready var slowmo_audio = $SlowmoAudio
 @onready var explosion_audio = $ExplosionAudio
-@onready var zombie_audio = $ZombieAudio
+
 
 @onready var aoe_scene = preload("res://Player/cucumber_aoe.tscn")
 @onready var aoe_par = preload("res://explosion_particles.tscn")
@@ -49,6 +49,11 @@ var current_trail = Trail
 func _ready():
 	juice_bar.max_value = MAX_JUICE_POINTS
 	update_zombie_text()
+
+
+func _on_body_entered(body):
+	print(body.name)
+
 
 func update_zombie_text():
 	zombies_uitext.text = "x " + str(zombies_killed) + " / " + str(ZOMBIES_REQUIRED)
@@ -200,7 +205,6 @@ func add_juice(amount):
 	juice_points = clamp(juice_points, 0, MAX_JUICE_POINTS)
 
 func zombie_killed():
-	zombie_audio.play()
 	zombies_killed += 1
 	update_zombie_text()
 
