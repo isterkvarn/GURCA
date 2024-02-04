@@ -96,7 +96,7 @@ func is_stuck(delta) -> bool:
 func take_attack(dir: Vector3):
 	velocity.x += dir.x
 	velocity.y += dir.y
-	velocity.z += 50.0
+	velocity.z += 25.0
 	
 	model.rotation.y = 0
 	set_random_rotation()
