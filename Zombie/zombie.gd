@@ -4,7 +4,7 @@ const SPEED = 300.0
 const JUMP_VELOCITY = 4.5
 const DIR_CHANGE_DELAY = 0.5
 # The Y-level where the zombies should be deallocated
-const Y_DEALLOCATE = -20.0
+const Y_DEALLOCATE = -30.0
 
 const RANDOM_ROT_MIN = 0.5
 const RANDOM_ROT_MAX = 3.0
@@ -96,7 +96,7 @@ func is_stuck(delta) -> bool:
 func take_attack(dir: Vector3):
 	velocity.x += dir.x
 	velocity.y += dir.y
-	velocity.z += 25.0
+	velocity.z += dir.z
 	
 	model.rotation.y = 0
 	set_random_rotation()
