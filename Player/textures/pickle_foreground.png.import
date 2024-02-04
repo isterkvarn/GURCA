@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b8c2afl7xa2oe"
-path="res://.godot/imported/alien.png-aebe7b13c76e23e1821a816a164a3f66.ctex"
+uid="uid://h4pliem3ft75"
+path="res://.godot/imported/pickle_foreground.png-3d7b32376d4e1cbf6385ae6c95c449fd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://alien.png"
-dest_files=["res://.godot/imported/alien.png-aebe7b13c76e23e1821a816a164a3f66.ctex"]
+source_file="res://Player/textures/pickle_foreground.png"
+dest_files=["res://.godot/imported/pickle_foreground.png-3d7b32376d4e1cbf6385ae6c95c449fd.ctex"]
 
 [params]
 
