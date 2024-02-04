@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://h4pliem3ft75"
-path="res://.godot/imported/pickle_foreground.png-3d7b32376d4e1cbf6385ae6c95c449fd.ctex"
+uid="uid://bv783wk72yrv0"
+path="res://.godot/imported/pickle_foreground.png-a29b978e3f3233ea56dcb9f632a001a5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Player/textures/pickle_foreground.png"
-dest_files=["res://.godot/imported/pickle_foreground.png-3d7b32376d4e1cbf6385ae6c95c449fd.ctex"]
+source_file="res://Player/pickle_foreground.png"
+dest_files=["res://.godot/imported/pickle_foreground.png-a29b978e3f3233ea56dcb9f632a001a5.ctex"]
 
 [params]
 
