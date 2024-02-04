@@ -21,8 +21,13 @@ const MIN_CHARGE = 20
 
 @onready var arrow_node = $ArrowNode
 @onready var animator = $CollisionShape3D/cumber/AnimationPlayer
+@onready var charge_audio = $ChargeAudio
+@onready var launch_audio = $LaunchAudio
+@onready var slowmo_audio = $SlowmoAudio
+@onready var explosion_audio = $ExplosionAudio
 
 @onready var aoe_scene = preload("res://Player/cucumber_aoe.tscn")
+@onready var aoe_par = preload("res://explosion_particles.tscn")
 
 const MAX_JUICE_POINTS = 100
 var juice_points = MAX_JUICE_POINTS
@@ -93,8 +98,10 @@ func _physics_process(delta):
 		if !charging_jump:
 			charging_jump = true
 			juice_points -= DASH_COST
+			charge_audio.play()
 			if not is_on_floor():
 				Engine.time_scale = BULLET_TIME_SLOW
+				slowmo_audio.play()
 		var time_scale = Engine.time_scale
 		juice_points -= BULLET_TIME_JUICE_DRAIN*delta/time_scale
 		curr_charge_time += CHARGE_SPEED*delta/time_scale
@@ -105,6 +112,8 @@ func _physics_process(delta):
 		charging_jump = false
 		arrow_node.visible = false
 		Engine.time_scale = 1.0
+		launch_audio.play()
+		charge_audio.stop()
 		
 		if not is_on_floor():
 			doing_aoe = true
@@ -183,9 +192,13 @@ func add_juice(amount):
 	juice_points = clamp(juice_points, 0, MAX_JUICE_POINTS)
 
 func spawn_aoe():
+	explosion_audio.play()
 	var aoe_instance = aoe_scene.instantiate()
 	aoe_instance.set_position(position)
 	get_tree().get_root().add_child(aoe_instance)
+	var particles = aoe_par.instantiate()
+	particles.set_position(position)
+	get_tree().get_root().add_child(particles)
 
 func make_trail():
 	current_trail = Trail.create()

@@ -1,7 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://b5kcdh8ngs24k"]
+[gd_scene load_steps=10 format=3 uid="uid://b5kcdh8ngs24k"]
 
 [ext_resource type="PackedScene" uid="uid://11xpuffjiu65" path="res://Player/player.tscn" id="1_p4lpe"]
 [ext_resource type="PackedScene" uid="uid://v1gij5hbryqi" path="res://Zombie/zombie.tscn" id="2_cqjvc"]
+[ext_resource type="PackedScene" uid="uid://c24x20oiy1fk5" path="res://Checkpoints/checkpoint_daddy.tscn" id="3_8j6us"]
+[ext_resource type="PackedScene" uid="uid://dganmmbykwj1" path="res://Checkpoints/checkpoint.tscn" id="4_yyel0"]
+[ext_resource type="PackedScene" uid="uid://colt0amva3bd8" path="res://Checkpoints/death_pit.tscn" id="5_e0uqm"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_8aynq"]
 
@@ -62,6 +65,7 @@ collision_mask = 3
 shape = SubResource("BoxShape3D_wtao3")
 
 [node name="Player" parent="." instance=ExtResource("1_p4lpe")]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.65696, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -84,3 +88,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.69224, 2.07294, -0.0125803
 
 [node name="Zombie3" parent="." instance=ExtResource("2_cqjvc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.94899, 14.1263, -0.0125803)
+
+[node name="CheckpointDaddy" parent="." instance=ExtResource("3_8j6us")]
+unique_name_in_owner = true
+
+[node name="Node3D" parent="CheckpointDaddy" instance=ExtResource("4_yyel0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.6684, 8.86062, 0)
+
+[node name="DeathPit" parent="." instance=ExtResource("5_e0uqm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.2805, 2.4672, -0.0565472)

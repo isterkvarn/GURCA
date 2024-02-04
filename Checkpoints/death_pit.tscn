@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://colt0amva3bd8"]
+
+[ext_resource type="Script" path="res://Checkpoints/death_pit.gd" id="1_f2jer"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_i8d46"]
+size = Vector3(10, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tay2i"]
+transparency = 1
+albedo_color = Color(0.592157, 0.0352941, 0, 0.52549)
+
+[sub_resource type="BoxMesh" id="BoxMesh_8qigm"]
+size = Vector3(10, 1, 1)
+
+[node name="DeathPit" type="Area3D"]
+script = ExtResource("1_f2jer")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_i8d46")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_tay2i")
+mesh = SubResource("BoxMesh_8qigm")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

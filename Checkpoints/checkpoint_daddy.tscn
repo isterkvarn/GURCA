@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c24x20oiy1fk5"]
+
+[ext_resource type="Script" path="res://Checkpoints/checkpoint_daddy.gd" id="1_8t0af"]
+
+[node name="CheckpointDaddy" type="Node3D"]
+script = ExtResource("1_8t0af")
