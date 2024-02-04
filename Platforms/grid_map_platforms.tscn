@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cevuadsi7m068"]
+
+[ext_resource type="MeshLibrary" uid="uid://tr1iamclpw32" path="res://Platforms/blocks.tres" id="1_ui73b"]
+
+[node name="GridMap" type="GridMap"]
+mesh_library = ExtResource("1_ui73b")
+data = {
+"cells": PackedInt32Array(65535, 65535, 0, 0, 65535, 0, 1, 65535, 0, 2, 65535, 0, 4, 65535, 0, 5, 65535, 0, 7, 65535, 0, 8, 65535, 0, 6, 65535, 0, 3, 65535, 0)
+}
