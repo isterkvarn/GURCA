@@ -17,8 +17,8 @@ const MIN_CHARGE = 20
 
 @onready var collision_shape = $CollisionShape3D
 @onready var camera = $Camera3D
-@onready var juice_bar = $Camera3D/Control/JuiceBar
-@onready var charge_bar = $Camera3D/Control/Chargebar
+@onready var juice_bar = $Camera3D/Control/Node2D/JuiceBar
+
 @onready var arrow_node = $ArrowNode
 @onready var animator = $CollisionShape3D/cumber/AnimationPlayer
 
@@ -38,7 +38,7 @@ var current_trail = Trail
 
 func _ready():
 	juice_bar.max_value = MAX_JUICE_POINTS
-	charge_bar.max_value = MAX_CHARGE
+
 
 func _physics_process(delta):
 	# Clamp juice
@@ -176,7 +176,7 @@ func do_rotation(delta):
 
 func update_juicebar():
 	juice_bar.value = juice_points
-	charge_bar.value = curr_charge_time
+
 
 func add_juice(amount):
 	juice_points += amount
