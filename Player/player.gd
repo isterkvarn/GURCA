@@ -10,7 +10,7 @@ const JUICE_REGEN = 80
 const CHARGE_SPEED = 80
 const DASH_COST = 5
 const LAUNCH_MAX_COOLDOWN = 0.6
-const ZOMBIES_REQUIRED = 10
+const ZOMBIES_REQUIRED = 15
 
 const CHARGE_VECTOR_CONSTANT = 0.5
 const MAX_CHARGE = 80
@@ -56,7 +56,7 @@ func _ready():
 func winning():
 	if zombies_killed >= ZOMBIES_REQUIRED:
 		get_tree().root.add_child(map_scene.instantiate())
-		get_node("/root/Start").free()
+		get_node("/root/Node3D").free()
 		print("epic win")
 
 func _on_body_entered(body):
