@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-const SPEED = 200.0
+const SPEED = 300.0
 const JUMP_VELOCITY = 4.5
 const DIR_CHANGE_DELAY = 0.5
 # The Y-level where the zombies should be deallocated
@@ -26,6 +26,7 @@ var rot: Vector3
 
 
 func _ready():
+	dir = (randi() % 2) * 2 - 1
 	set_model_rotation()
 
 
@@ -95,7 +96,7 @@ func is_stuck(delta) -> bool:
 func take_attack(dir: Vector3):
 	velocity.x += dir.x
 	velocity.y += dir.y
-	velocity.z += 5.0
+	velocity.z += 50.0
 	
 	model.rotation.y = 0
 	set_random_rotation()
